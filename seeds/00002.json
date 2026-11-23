@@ -1,0 +1,511 @@
+{
+ "id": "00002",
+ "rng_seed": 2,
+ "generator": "tools/seedgen.py",
+ "signature": [
+  "op",
+  "rel"
+ ],
+ "axioms": [
+  {
+   "name": "ax1",
+   "formula": [
+    "forall",
+    [
+     "x",
+     "y"
+    ],
+    [
+     "eq",
+     [
+      "op",
+      [
+       "op",
+       [
+        "var",
+        "x"
+       ],
+       [
+        "var",
+        "x"
+       ]
+      ],
+      [
+       "op",
+       [
+        "var",
+        "x"
+       ],
+       [
+        "var",
+        "y"
+       ]
+      ]
+     ],
+     [
+      "op",
+      [
+       "op",
+       [
+        "var",
+        "y"
+       ],
+       [
+        "var",
+        "y"
+       ]
+      ],
+      [
+       "op",
+       [
+        "var",
+        "x"
+       ],
+       [
+        "var",
+        "x"
+       ]
+      ]
+     ]
+    ]
+   ],
+   "human": "∀ x y, (x ⋆ x) ⋆ (x ⋆ y) = (y ⋆ y) ⋆ (x ⋆ x)"
+  }
+ ],
+ "definitions": [
+  {
+   "name": "d1",
+   "kind": "element",
+   "formula": [
+    "forall",
+    [
+     "x"
+    ],
+    [
+     "rel",
+     [
+      "op",
+      [
+       "var",
+       "a"
+      ],
+      [
+       "var",
+       "x"
+      ]
+     ],
+     [
+      "op",
+      [
+       "var",
+       "x"
+      ],
+      [
+       "var",
+       "x"
+      ]
+     ]
+    ]
+   ],
+   "human": "d1(a) :⇔ ∀ x, a ⋆ x ρ x ⋆ x",
+   "hint": "false in every example found"
+  },
+  {
+   "name": "d2",
+   "kind": "element",
+   "formula": [
+    "exists",
+    [
+     "x"
+    ],
+    [
+     "eq",
+     [
+      "op",
+      [
+       "op",
+       [
+        "var",
+        "x"
+       ],
+       [
+        "var",
+        "a"
+       ]
+      ],
+      [
+       "op",
+       [
+        "var",
+        "x"
+       ],
+       [
+        "var",
+        "x"
+       ]
+      ]
+     ],
+     [
+      "op",
+      [
+       "op",
+       [
+        "var",
+        "x"
+       ],
+       [
+        "var",
+        "x"
+       ]
+      ],
+      [
+       "op",
+       [
+        "var",
+        "x"
+       ],
+       [
+        "var",
+        "x"
+       ]
+      ]
+     ]
+    ]
+   ],
+   "human": "d2(a) :⇔ ∃ x, (x ⋆ a) ⋆ (x ⋆ x) = (x ⋆ x) ⋆ (x ⋆ x)",
+   "hint": "true in every example found"
+  },
+  {
+   "name": "d3",
+   "kind": "element",
+   "formula": [
+    "exists",
+    [
+     "x"
+    ],
+    [
+     "eq",
+     [
+      "op",
+      [
+       "op",
+       [
+        "var",
+        "x"
+       ],
+       [
+        "var",
+        "x"
+       ]
+      ],
+      [
+       "op",
+       [
+        "var",
+        "x"
+       ],
+       [
+        "var",
+        "x"
+       ]
+      ]
+     ],
+     [
+      "op",
+      [
+       "op",
+       [
+        "var",
+        "x"
+       ],
+       [
+        "var",
+        "a"
+       ]
+      ],
+      [
+       "op",
+       [
+        "var",
+        "x"
+       ],
+       [
+        "var",
+        "a"
+       ]
+      ]
+     ]
+    ]
+   ],
+   "human": "d3(a) :⇔ ∃ x, (x ⋆ x) ⋆ (x ⋆ x) = (x ⋆ a) ⋆ (x ⋆ a)",
+   "hint": "true in every example found"
+  },
+  {
+   "name": "d4",
+   "kind": "structure",
+   "formula": [
+    "forall",
+    [
+     "x",
+     "y"
+    ],
+    [
+     "eq",
+     [
+      "op",
+      [
+       "op",
+       [
+        "var",
+        "x"
+       ],
+       [
+        "var",
+        "y"
+       ]
+      ],
+      [
+       "var",
+       "x"
+      ]
+     ],
+     [
+      "op",
+      [
+       "var",
+       "x"
+      ],
+      [
+       "var",
+       "y"
+      ]
+     ]
+    ]
+   ],
+   "human": "d4 :⇔ ∀ x y, (x ⋆ y) ⋆ x = x ⋆ y",
+   "hint": "true in every example found"
+  }
+ ],
+ "examples": [
+  {
+   "size": 2,
+   "op": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "rel": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "satisfies": {
+    "d1": [
+     false,
+     false
+    ],
+    "d2": [
+     true,
+     true
+    ],
+    "d3": [
+     true,
+     true
+    ],
+    "d4": true
+   }
+  },
+  {
+   "size": 2,
+   "op": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "rel": [
+    0,
+    0,
+    0,
+    1
+   ],
+   "satisfies": {
+    "d1": [
+     false,
+     false
+    ],
+    "d2": [
+     true,
+     true
+    ],
+    "d3": [
+     true,
+     true
+    ],
+    "d4": true
+   }
+  },
+  {
+   "size": 2,
+   "op": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "rel": [
+    0,
+    0,
+    1,
+    0
+   ],
+   "satisfies": {
+    "d1": [
+     false,
+     false
+    ],
+    "d2": [
+     true,
+     true
+    ],
+    "d3": [
+     true,
+     true
+    ],
+    "d4": true
+   }
+  },
+  {
+   "size": 3,
+   "op": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "rel": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "satisfies": {
+    "d1": [
+     false,
+     false,
+     false
+    ],
+    "d2": [
+     true,
+     true,
+     true
+    ],
+    "d3": [
+     true,
+     true,
+     true
+    ],
+    "d4": true
+   }
+  },
+  {
+   "size": 3,
+   "op": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "rel": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "satisfies": {
+    "d1": [
+     false,
+     false,
+     false
+    ],
+    "d2": [
+     true,
+     true,
+     true
+    ],
+    "d3": [
+     true,
+     true,
+     true
+    ],
+    "d4": true
+   }
+  },
+  {
+   "size": 3,
+   "op": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "rel": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "satisfies": {
+    "d1": [
+     false,
+     false,
+     false
+    ],
+    "d2": [
+     true,
+     true,
+     true
+    ],
+    "d3": [
+     true,
+     true,
+     true
+    ],
+    "d4": true
+   }
+  }
+ ],
+ "notes": "Exhaustive model search over sizes [2, 3], at most 3 examples per size."
+}

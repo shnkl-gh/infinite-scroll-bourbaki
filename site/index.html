@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infinite Scroll Bourbaki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="vendor/katex/katex.min.css">
+<script src="vendor/katex/katex.min.js"></script>
+<style>
+  :root {
+    --paper: #f6f1e7;
+    --ink: #1d1b18;
+    --muted: #6f675b;
+    --rule: #cfc4b0;
+    --accent: #8a2b1d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #171614;
+      --ink: #e8e1d4;
+      --muted: #9a917f;
+      --rule: #3a362f;
+      --accent: #d9826f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #171614;
+    --ink: #e8e1d4;
+    --muted: #9a917f;
+    --rule: #3a362f;
+    --accent: #d9826f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--paper); color: var(--ink); }
+  body {
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 20px;
+    line-height: 1.55;
+  }
+  header {
+    position: sticky; top: 0; z-index: 2;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 10px 16px;
+    display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+    font-variant: small-caps; letter-spacing: 0.06em; font-size: 16px; color: var(--muted);
+  }
+  header .right { display: flex; align-items: baseline; gap: 14px; }
+  header .live { color: var(--accent); white-space: nowrap; }
+  #lang {
+    font: inherit; font-variant: normal; font-size: 13px; letter-spacing: 0.08em;
+    color: var(--ink); background: transparent; cursor: pointer;
+    border: 1px solid var(--rule); border-radius: 3px; padding: 2px 8px;
+  }
+  #lang:hover { border-color: var(--muted); }
+  header .live::before {
+    content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); margin-right: 6px; vertical-align: 1px;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 50% { opacity: 0.25; } }
+  main { max-width: 720px; margin: 0 auto; padding: 24px 16px 40vh; }
+  h1, h2, h3 { font-weight: 600; text-align: center; letter-spacing: 0.04em; }
+  h1 { font-size: 1.35em; margin: 2.2em 0 1.2em; }
+  h2 { font-size: 1.1em; margin: 2em 0 1em; }
+  h3 { font-size: 1em; font-style: italic; font-weight: 400; text-align: left; margin: 1.6em 0 0.6em; }
+  p { margin: 0 0 0.9em; text-align: justify; hyphens: auto; }
+  .display { display: block; text-align: center; margin: 0.6em 0; overflow-x: auto; overflow-y: hidden; }
+  .lean-link {
+    margin-inline-start: 0.35em; padding: 0; border: 0; background: none;
+    color: var(--muted); font: 0.72em system-ui, sans-serif; cursor: pointer;
+  }
+  .lean-link:hover, .lean-link:focus-visible { text-decoration: underline; }
+  #lean-source { width: min(50rem, 88vw); }
+  #lean-source form { display: flex; justify-content: space-between; gap: 1em; }
+  #lean-source pre { max-height: 65vh; overflow: auto; }
+  .cursor {
+    display: inline-block; width: 0.5em; height: 1em; background: var(--ink);
+    vertical-align: -0.12em; margin-left: 1px; animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .sep { text-align: center; color: var(--muted); margin: 3em 0; letter-spacing: 1em; }
+  footer { max-width: 720px; margin: 0 auto; padding: 0 16px 24px; color: var(--muted); font-size: 15px; }
+  footer a { color: var(--muted); }
+  .katex { font-size: 1.02em; }
+</style>
+</head>
+<body>
+<header>
+  <span>Éléments de mathématique aléatoire</span>
+  <span class="right">
+    <button id="lang" type="button" hidden>FR</button>
+    <span id="live-status" class="live" hidden>live</span>
+  </span>
+</header>
+<main id="stream" aria-live="off"></main>
+<footer id="foot">Formal proofs in Lean.</footer>
+<dialog id="lean-source" aria-labelledby="lean-title">
+  <form method="dialog">
+    <strong id="lean-title"></strong>
+    <button type="submit" aria-label="Close">×</button>
+  </form>
+  <pre><code id="lean-code"></code></pre>
+</dialog>
+<script src="app.js?v=2"></script>
+</body>
+</html>
